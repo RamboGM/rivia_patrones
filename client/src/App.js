@@ -87,7 +87,7 @@ function App() {
 
         <MotionBox
           className="logo-container"
-          animate={logoPosition ? { y: -260, scale: 0.7 } : { y: 0, scale: 1 }}
+          animate={logoPosition ? { y: "-45%", scale: 0.7 } : { y: "0%", scale: 1 }}
           transition={{ duration: 1 }}
           display="flex"
           justifyContent="center"
@@ -116,16 +116,17 @@ function App() {
           </MotionBox>
         )}
 
+
         {showLoginPrompt && (
           <MotionBox
             ref={loginPromptRef}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            position="fixed"
-            top="50%"
+            position="absolute" /* Cambiado de fixed a absolute */
+            top="calc(10% + 100px)" /* Alineación relativa al logo */
             left="50%"
-            transform="translate(-50%, -50%)"
+            transform="translate(-50%, 0)" /* Solo centrado horizontal */
             bg="rgba(255, 255, 255, 0.9)"
             p={6}
             borderRadius="md"
@@ -141,6 +142,7 @@ function App() {
             </VStack>
           </MotionBox>
         )}
+
       </Box>
     </ChakraProvider>
   );
