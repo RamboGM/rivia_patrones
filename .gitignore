@@ -1,0 +1,15 @@
+# dependencias
+node_modules/
+app/node_modules/
+client/node_modules/
+
+# builds
+dist/
+client/dist/
+
+# archivos sensibles
+.env
+app/.env
+
+# zips pesados
+*.zip

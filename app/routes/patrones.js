@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const patronesController = require('../controllers/patronesController');
+const { checkPlanLimits } = require('../middleware/plan');
 
-// Ruta para crear un patrón
-router.post('/', patronesController.createPatron);
-
-// Ruta para obtener todos los patrones
 router.get('/', patronesController.getPatrones);
+router.get('/:id', patronesController.getPatron);
+router.post('/', checkPlanLimits, patronesController.createPatron);
+router.put('/:id', checkPlanLimits, patronesController.updatePatron);
+router.delete('/:id', patronesController.deletePatron);
+router.get('/:id/pdf', patronesController.exportPdf);
 
 module.exports = router;
